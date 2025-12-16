@@ -38,3 +38,23 @@ jobs:
 
       - name: Run Tests
         run: npm run lint:eslint:check
+
+  commitlint:
+    name: commitlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all commits
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/hydrogen"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Tests
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
