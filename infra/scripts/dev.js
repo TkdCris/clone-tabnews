@@ -6,7 +6,7 @@ run("npm", ["run", "services:up"]);
 run("npm", ["run", "services:wait:database"]);
 run("npm", ["run", "migrations:up"]);
 
-const next = run("next", ["dev"]);
+run("next", ["dev"]);
 
 const shutdown = () => {
   console.log("\n🧹 Encerrando serviços...");
