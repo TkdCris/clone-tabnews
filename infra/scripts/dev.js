@@ -1,12 +1,20 @@
 const { spawn } = require("node:child_process");
 
-const run = (cmd, args) => spawn(cmd, args, { stdio: "inherit", shell: true });
+function run(cmd, args) {
+  return new Promise((resolve) => {
+    const process = spawn(cmd, args, { stdio: "inherit", shell: true });
+    process.on("close", (code) => {
+      resolve(code);
+    });
+  });
+}
 
-run("npm", ["run", "services:up"]);
-run("npm", ["run", "services:wait:database"]);
-run("npm", ["run", "migrations:up"]);
-
-run("next", ["dev"]);
+const runAsync = async () => {
+  await run("npm", ["run", "services:up"]);
+  await run("npm", ["run", "services:wait:database"]);
+  await run("npm", ["run", "migrations:up"]);
+  run("next", ["dev"]);
+};
 
 const shutdown = () => {
   console.log("\n🧹 Encerrando serviços...");
@@ -16,3 +24,5 @@ const shutdown = () => {
 
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
+
+runAsync();
