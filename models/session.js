@@ -20,8 +20,8 @@ async function create(userId) {
         RETURNING
           *
       ;`,
-      values: [token, userId, expiresAt]
-    })
+      values: [token, userId, expiresAt],
+    });
 
     return results.rows[0];
   }
@@ -30,6 +30,6 @@ async function create(userId) {
 const session = {
   create,
   EXPIRATION_IN_MILLISECONDS,
-}
+};
 
 export default session;
