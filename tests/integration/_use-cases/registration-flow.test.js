@@ -1,7 +1,6 @@
 import webserver from "infra/webserver";
 import activation from "models/activation";
 import user from "models/user";
-import { cookies } from "next/headers";
 import orchestrator from "tests/orchestrator.js";
 
 beforeAll(async () => {
