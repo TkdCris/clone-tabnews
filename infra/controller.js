@@ -69,8 +69,6 @@ async function injectAnonymousOrUser(request, response, next) {
 
   injectAnonimousUser(request);
   return next();
-
-  // 2 - Se não existir, injetar usuári anônimo.
 }
 
 async function injectAuthenticatedUser(request) {
@@ -104,7 +102,7 @@ function canRequest(feature) {
     }
 
     throw new ForbiddenError({
-      message: "Você não possui permissão para executar estar ação.",
+      message: "Você não possui permissão para executar esta ação.",
       action: `Verifique se o seu usuário possui a feature "${feature}"`,
     });
   };

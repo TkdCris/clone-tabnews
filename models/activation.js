@@ -126,6 +126,7 @@ const activation = {
   sendEmailToUser,
   markTokenAsUsed,
   activateUserByUserId,
+  EXPIRATION_IN_MILLISECONDS,
 };
 
 export default activation;
