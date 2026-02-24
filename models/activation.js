@@ -104,7 +104,6 @@ async function markTokenAsUsed(activationTokenId) {
 
 async function activateUserByUserId(userId) {
   const userToActivate = await user.findOneById(userId);
-  console.log(authorization.can(userToActivate, "read:activation_token"));
 
   if (!authorization.can(userToActivate, "read:activation_token")) {
     throw new ForbiddenError({
@@ -116,6 +115,7 @@ async function activateUserByUserId(userId) {
   const activatedUser = await user.setFeatures(userId, [
     "create:session",
     "read:session",
+    "update:user",
   ]);
   return activatedUser;
 }
