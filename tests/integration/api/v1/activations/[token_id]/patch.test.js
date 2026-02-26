@@ -120,6 +120,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
       expect(Date.parse(responseBody.expires_at)).not.toBeNaN();
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
+      expect(Date.parse(responseBody.used_at)).not.toBeNaN();
       expect(responseBody.updated_at > responseBody.created_at).toBe(true);
 
       const expiresAt = new Date(responseBody.expires_at);
