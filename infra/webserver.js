@@ -10,8 +10,6 @@ function getOrigin() {
   return "https://clone-tabnews-omega-seven-45.vercel.app/";
 }
 
-const webserver = {
-  origin: getOrigin(),
-};
+const webserver = { origin: getOrigin() };
 
 export default webserver;
