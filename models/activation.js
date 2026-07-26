@@ -66,7 +66,7 @@ async function create(userId) {
 
 async function sendEmailToUser(user, activationToken) {
   await email.send({
-    from: "TkdCris_TabNews <tkdcris@gmail.com>",
+    from: "TkdCrisTabNews <tkdcris@gmail.com>",
     to: user.email,
     subject: "Ative seu cadastro no TkdCris_TabNews!",
     text: `${user.username}, clique no link abaixo para ativar seu cadastro no TkdCris_TabNews:

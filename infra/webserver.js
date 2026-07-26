@@ -7,7 +7,7 @@ function getOrigin() {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return "https://clone-tabnews.cosmocode.com.br/";
+  return "https://tabnews.cosmocode.com.br/";
 }
 
 const webserver = { origin: getOrigin() };
